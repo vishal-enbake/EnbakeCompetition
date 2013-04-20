@@ -8,16 +8,21 @@
 						<%= content_tag :tr do%>
 							<%= content_tag :td, "Name"%>
 							<%= content_tag :td do%>
-								<%= text_field_tag "name", blog.name%>
+								<%= content_tag :div, :style => "height:30px; width:450px;background-color:#E3E3E3;" do%>
+									<%= blog.name%>
+								<% end %>
 							<% end %>
 						<% end %>
 						<%= content_tag :tr do%>
 							<%= content_tag :td, "Description"%>
 							<%= content_tag :td do%>
-								<%= text_area_tag "Description", blog.desc, :cols => 30, :rows => 10%>
+								<%= content_tag :div, :style => "height:110px; width:450px;background-color:#E3E3E3;" do%>
+									<%= blog.desc%>
+								<% end %>
 							<% end %>
 						<% end %>
 						<%= content_tag :tr do%>
+							<%= content_tag :td%>
 							<%= content_tag :td do%>
 								<%= link_to "view", blog, :class => "pull-right" if user_signed_in?%>
 							<% end %>

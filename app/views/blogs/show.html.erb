@@ -1,35 +1,54 @@
-<%= content_tag :h3, @blog.name%>
-<%= content_tag :h4, "No of Votes"%> <%=@blog.reputation_for(:votes)%>
-<%= content_tag :div do%>
-	<%= content_tag :table do%>
-		<%= content_tag :tr do%>
-			<%= content_tag :td, "Name"%>
-			<%= content_tag :td do%>
-				<%= text_field_tag "name", @blog.name%>
+<%= content_tag :div, :class => "well well-large" do%>
+	<%= content_tag :div, :class => "container-fluid" do %>
+		<%=content_tag :div, :class => "row-fluid" do %>
+			<%= content_tag :div, :class => "span8", :style => "background-color: white;" do %>
+				<%= content_tag :h3, @blog.name%>
+				<%= content_tag :h4, "No of Votes"%> <%=@blog.reputation_for(:votes)%>
+				<%= content_tag :div do%>
+					<%= content_tag :table do%>
+						<%= content_tag :tr do%>
+							<%= content_tag :td, "Name"%>
+							<%= content_tag :td do%>
+								<%= content_tag :div, :style => "height:30px; width:450px;background-color:#E3E3E3;" do%>
+									<%= @blog.name%>
+								<% end %>
+							<% end %>
+						<% end %>
+						<%= content_tag :tr do%>
+							<%= content_tag :td do%>
+								<%= link_to image_tag('up.png'), vote_blog_path(@blog, type: "up"), method: "get" %>
+								<%= tag('br', nil, nil)%><%= link_to image_tag('down.png'), vote_blog_path(@blog, type: "down"), method: "get" %>
+							<% end %>
+							<%= content_tag :td do%>
+								<%= content_tag :div, :style => "height:110px; width:450px;background-color:#E3E3E3;" do%>
+									<%= @blog.desc%>
+								<% end %>
+							<% end %>
+						<% end %>
+					<% end %>
+				<% end %>
 			<% end %>
-		<% end %>
-		<%= content_tag :tr do%>
-			<%= content_tag :td do%>
-				<%= link_to "up", vote_blog_path(@blog, type: "up"), method: "get" %>
-				<%= link_to "down", vote_blog_path(@blog, type: "down"), method: "get" %>
-			<% end %>
-			<%= content_tag :td do%>
-				<%= text_area_tag "Description", @blog.desc, :cols => 30, :rows => 10%>
+			<%= content_tag :div, :class => "span4" do %>
+				<%= content_tag :h3, "Comments"%>
+				<%= render @blog.comments %>
+				<%= form_for([@blog, @blog.comments.build]) do |f| %>
+					<%= content_tag :table do%>
+						<%= content_tag :tr do%>
+							<%= content_tag :td, "Comment" %>
+							<%= content_tag :td do%>
+								<%= f.text_field :body, :size => 30%>
+							<% end %>
+						<% end %>
+						<%= content_tag :tr do%>
+							<%= content_tag :td%>
+							<%= content_tag :td do%>
+								<%= f.submit "Comment", :class => "btn btn-info pull-right"%>
+							<% end %>
+						<% end %>
+					<% end %>
+				<% end %>
 			<% end %>
 		<% end %>
 	<% end %>
+	<%= link_to 'Back', :back, :class => "pull-right" %>
 <% end %>
-<h2>Comments</h2>
-<%= render @blog.comments %>
-<%= form_for([@blog, @blog.comments.build]) do |f| %>
-  <div class="field">
-    <%= f.label :comment %><br />
-    <%= f.text_field :body %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
-
-<%= link_to 'Back', blogs_path %>
-
