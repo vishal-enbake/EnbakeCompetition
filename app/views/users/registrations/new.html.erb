@@ -1,6 +1,6 @@
-<%= content_tag :div, :class => "ac-container" do%>
+<%= content_tag :div, :class => "well well-large" do%>
         <%= content_tag :h2, "Sign Up"%>
-        <%= content_tag :div, :id => "cam-content" do%>
+        <%= content_tag :div do%>
     <%= form_for :user, :url => registration_path(:user), :html => {:class => "sign-up-form c2s-form"} do |f|%>
       <%= content_tag :table, :class => "form-table" do%>
         <%= content_tag :tr do%>
