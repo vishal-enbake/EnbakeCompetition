@@ -43,3 +43,4 @@ gem 'therubyracer'
  gem 'debugger'
  gem 'less-rails-bootstrap'
 
+gem 'paperclip'

@@ -1,3 +1,4 @@
+<%= image_tag current_user.avatar.url(:thumb) unless current_user.nil?%><%= content_tag :span, current_user.username unless current_user.nil?%>
 <%=content_tag :div, :class => "container well well-large" do %>
 	<%= content_tag :div, :class => "container-fluid" do %>
 		<%=content_tag :div, :class => "row-fluid" do %>
@@ -6,8 +7,11 @@
 				<% @blogs.each do |blog| %>
 					<%= content_tag :table, :style => "" do%>
 						<%= content_tag :tr do%>
-							<%= content_tag :td, "Name"%>
 							<%= content_tag :td do%>
+								<%= image_tag blog.user.avatar.url(:thumb) unless current_user.nil?%>
+							<%end%>
+							<%= content_tag :td do%>
+							Posted by <%= content_tag :span, blog.user.username unless current_user.nil?%>
 								<%= content_tag :div, :style => "height:30px; width:450px;background-color:#E3E3E3;" do%>
 									<%= blog.name%>
 								<% end %>

@@ -5,6 +5,15 @@
       <%= content_tag :table, :class => "form-table" do%>
         <%= content_tag :tr do%>
           <%= content_tag :td, :style => "align:right" do%>
+            <%=f.label :Username%>
+          <% end %>
+          <%= content_tag :td do%>
+            <%= f.text_field :username%>
+          <% end %>
+        <% end %>
+		
+		<%= content_tag :tr do%>
+          <%= content_tag :td, :style => "align:right" do%>
             <%=f.label :email%>
           <% end %>
           <%= content_tag :td do%>
@@ -28,6 +37,15 @@
             <%= f.password_field :password_confirmation, :required => true%>
           <% end %>
         <% end %>
+		<%= content_tag :tr do%>
+          <%= content_tag :td, :style => "align:right" do%>
+            <%=f.label :avatar%>
+          <% end %>
+          <%= content_tag :td do%>
+            <%= f.file_field :avatar, :required => true%>
+          <% end %>
+        <% end %>
+		
         <%= content_tag :tr do%>
           <%= content_tag :td %>
           <%= content_tag :td do%>
