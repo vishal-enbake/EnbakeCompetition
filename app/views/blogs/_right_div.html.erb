@@ -1,4 +1,4 @@
-<%= content_tag :div, :class => "span4", :style => "text-align:center; background-color: white; min-height: 450px;" do %>
+<%= content_tag :div, :class => "span4", :style => "text-align:center; background-color: white; min-height: 655px;" do %>
 	<%= content_tag :div do %>
 		<%= content_tag :h3, "Top 10 Blogs" %>
 		<%= content_tag :table, :class => 'table table-condensed' do%>
@@ -7,7 +7,7 @@
 					<%= content_tag :td do%>
 						<%= link_to_if user_signed_in?, top_blog.name, top_blog, :class => "pull-right"%>
 					<% end %>
-					<%= content_tag :td, top_blog.reputation_for(:votes)%>
+					<%= content_tag :td, top_blog.reputation_for(:votes).to_i %>
 				<% end %>
 			<% end %>
 		<% end %>
