@@ -1,25 +1,19 @@
-<h1>Listing blogs</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Desc</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @blogs.each do |blog| %>
-  <tr>
-    <td><%= blog.name %></td>
-    <td><%= blog.desc %></td>
-    <td><%= link_to 'Show', blog %></td>
-    <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
-    <td><%= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+<%= content_tag :h3, "Blogs"%>
+<%= content_tag :table do%>
+	<% @blogs.each do |blog| %>
+		<%= content_tag :tr do%>
+			<%= content_tag :td, "Name"%>
+			<%= content_tag :td do%>
+				<%= text_field_tag "name", blog.name%>
+			<% end %>
+		<% end %>
+		<%= content_tag :tr do%>
+			<%= content_tag :td, "Description"%>
+			<%= content_tag :td do%>
+				<%= text_area_tag "Description", blog.desc, :cols => 30, :rows => 10%>
+			<% end %>
+		<% end %>
+	<% end %>
 <% end %>
-</table>
-
-<br />
 
 <%= link_to 'New Blog', new_blog_path %>
