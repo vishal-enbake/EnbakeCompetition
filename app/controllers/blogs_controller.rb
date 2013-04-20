@@ -1,8 +1,13 @@
 class BlogsController < ApplicationController
   # GET /blogs
   # GET /blogs.json
+  skip_before_filter :authenticate_user!, :only => [:show, :index]
   def index
-    @blogs = Blog.all
+    if params[:slug]
+      @blogs = Blog.all(:include => [:users], :conditions => ["users.id = blogs.user_id && users.name= ?", params[:slug])
+    else
+      @blogs = Blog.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb
