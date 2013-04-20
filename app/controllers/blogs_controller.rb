@@ -8,6 +8,7 @@ class BlogsController < ApplicationController
     else
       @blogs = Blog.all
     end
+      @blogs = Blog.paginate(:page => params[:page], :per_page => 5)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -45,6 +46,7 @@ class BlogsController < ApplicationController
   # POST /blogs
   # POST /blogs.json
   def create
+    params[:blog].merge!(:user_id => current_user.id)
     @blog = Blog.new(params[:blog])
 
     respond_to do |format|
@@ -84,5 +86,12 @@ class BlogsController < ApplicationController
       format.html { redirect_to blogs_url }
       format.json { head :no_content }
     end
+  end
+  
+  def vote
+    value = params[:type] == "up" ? 1 : -1
+    @blog = Blog.find(params[:id])
+    @blog.add_or_update_evaluation(:votes, value, current_user)
+    redirect_to :back, notice: "Thank you for voting"
   end
 end

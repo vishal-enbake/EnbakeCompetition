@@ -1,4 +1,5 @@
 <%= content_tag :h3, @blog.name%>
+<%= content_tag :h4, "No of Votes"%> <%=@blog.reputation_for(:votes)%>
 <%= content_tag :div do%>
 	<%= content_tag :table do%>
 		<%= content_tag :tr do%>
@@ -8,12 +9,27 @@
 			<% end %>
 		<% end %>
 		<%= content_tag :tr do%>
-			<%= content_tag :td, "Description"%>
+			<%= content_tag :td do%>
+				<%= link_to "up", vote_blog_path(@blog, type: "up"), method: "get" %>
+				<%= link_to "down", vote_blog_path(@blog, type: "down"), method: "get" %>
+			<% end %>
 			<%= content_tag :td do%>
 				<%= text_area_tag "Description", @blog.desc, :cols => 30, :rows => 10%>
 			<% end %>
 		<% end %>
 	<% end %>
 <% end %>
+<h2>Comments</h2>
+<%= render @blog.comments %>
+<%= form_for([@blog, @blog.comments.build]) do |f| %>
+  <div class="field">
+    <%= f.label :comment %><br />
+    <%= f.text_field :body %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
 
-<%= link_to 'Back', :back %>
+<%= link_to 'Back', blogs_path %>
+

@@ -22,6 +22,7 @@ GEM
       activesupport (= 3.2.8)
       arel (~> 3.0.2)
       tzinfo (~> 0.3.29)
+    activerecord-reputation-system (2.0.2)
     activeresource (3.2.8)
       activemodel (= 3.2.8)
       activesupport (= 3.2.8)
@@ -125,11 +126,13 @@ GEM
       multi_json (~> 1.0, >= 1.0.2)
     warden (1.2.1)
       rack (>= 1.0)
+    will_paginate (3.0.3)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-reputation-system
   coffee-rails (~> 3.2.1)
   debugger
   devise
@@ -140,3 +143,4 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   therubyracer
   uglifier (>= 1.0.3)
+  will_paginate (~> 3.0)

@@ -1,8 +1,12 @@
 EnbakeCompetition::Application.routes.draw do
   devise_for :users
 
-  resources :blogs
-
+  resources :blogs do
+    member do
+      get :vote
+    end
+    resources :comments
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -28,7 +32,7 @@ EnbakeCompetition::Application.routes.draw do
   #       get 'sold'
   #     end
   #   end
-
+ 
   # Sample resource route with sub-resources:
   #   resources :products do
   #     resources :comments, :sales
