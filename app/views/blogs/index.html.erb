@@ -3,6 +3,7 @@
 	<%= content_tag :div, :class => "container-fluid" do %>
 		<%=content_tag :div, :class => "row-fluid" do %>
 			<%= content_tag :div, :class => "span8", :style => " background-color: white;" do %>
+			<%= link_to 'New Blog', new_blog_path, :class => "pull-right"%>
 				<%= content_tag :h3, "BLOGS", :color=>"orange"%>
 				<% @blogs.each do |blog| %>
 					<%= content_tag :table, :style => "" do%>
@@ -39,7 +40,4 @@
 		<% end %>
 	<% end %>
 <% end %>
-
-
-<%= link_to 'New Blog', new_blog_path %>
 

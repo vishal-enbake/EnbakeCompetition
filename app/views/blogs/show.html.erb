@@ -3,7 +3,7 @@
 		<%=content_tag :div, :class => "row-fluid" do %>
 			<%= content_tag :div, :class => "span8", :style => "background-color: white;" do %>
 				<%= content_tag :h3, @blog.name%>
-				<%= content_tag :h4, "No of Votes"%> <%=@blog.reputation_for(:votes)%>
+				<%= content_tag :h4, "No of Votes"%> <%=@blog.reputation_for(:votes).to_i%>
 				<%= content_tag :div do%>
 					<%= content_tag :table do%>
 						<%= content_tag :tr do%>
