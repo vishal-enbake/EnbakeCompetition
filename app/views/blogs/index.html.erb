@@ -1,6 +1,6 @@
 <%= content_tag :h3, "Blogs"%>
-<%= content_tag :table do%>
-	<% @blogs.each do |blog| %>
+<% @blogs.each do |blog| %>
+	<%= content_tag :table, :style => "background-color:grey" do%>
 		<%= content_tag :tr do%>
 			<%= content_tag :td, "Name"%>
 			<%= content_tag :td do%>
@@ -11,6 +11,11 @@
 			<%= content_tag :td, "Description"%>
 			<%= content_tag :td do%>
 				<%= text_area_tag "Description", blog.desc, :cols => 30, :rows => 10%>
+			<% end %>
+		<% end %>
+		<%= content_tag :tr do%>
+			<%= content_tag :td do%>
+				<%= link_to "view", blog%>
 			<% end %>
 		<% end %>
 	<% end %>

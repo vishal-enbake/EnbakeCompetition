@@ -1,15 +1,21 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Name:</b>
-  <%= @blog.name %>
-</p>
-
-<p>
-  <b>Desc:</b>
-  <%= @blog.desc %>
-</p>
+<%= content_tag :h3, @blog.name%>
+<%= content_tag :div do%>
+	<%= content_tag :table do%>
+		<%= content_tag :tr do%>
+			<%= content_tag :td, "Name"%>
+			<%= content_tag :td do%>
+				<%= text_field_tag "name", @blog.name%>
+			<% end %>
+		<% end %>
+		<%= content_tag :tr do%>
+			<%= content_tag :td, "Description"%>
+			<%= content_tag :td do%>
+				<%= text_area_tag "Description", @blog.desc, :cols => 30, :rows => 10%>
+			<% end %>
+		<% end %>
+	<% end %>
+<% end %>
 
 
 <%= link_to 'Edit', edit_blog_path(@blog) %> |
-<%= link_to 'Back', blogs_path %>
+<%= link_to 'Back', :back %>
