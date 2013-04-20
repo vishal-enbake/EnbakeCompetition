@@ -19,18 +19,18 @@
 						<% end %>
 						<%= content_tag :tr do%>
 							<%= content_tag :td do%>
-								<%= link_to "view", blog, :class => "pull-right"%>
+								<%= link_to "view", blog, :class => "pull-right" if user_signed_in?%>
 							<% end %>
 						<% end %>
 					<% end %>
 				<% end %>
+				<%= will_paginate @posts %>
 			<% end %>
-			<%= render :partial => "right_div"%>
+			<%= render :partial => "right_div", :locals => {:top_blogs => @top_blogs}%>
 		<% end %>
 	<% end %>
 <% end %>
 
 
 <%= link_to 'New Blog', new_blog_path %>
-<%= will_paginate @posts %>
 

@@ -4,12 +4,12 @@ class BlogsController < ApplicationController
   skip_before_filter :authenticate_user!, :only => [:show, :index]
   def index
     if params[:slug]
-      @blogs = Blog.all(:include => [:users], :conditions => ["users.id = blogs.user_id && users.name= ?", params[:slug])
+      @blogs = Blog.all(:include => [:users], :conditions => ["users.id = blogs.user_id && users.name= ?", params[:slug]])
     else
       @blogs = Blog.all
     end
       @blogs = Blog.paginate(:page => params[:page], :per_page => 5)
-
+      @top_blogs = Blog.find_with_reputation(:votes, :all, :limit => 10, order: "votes desc")
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @blogs }
