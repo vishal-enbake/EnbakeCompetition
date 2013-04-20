@@ -1,24 +1,31 @@
-<%= content_tag :h3, "Blogs"%>
-<% @blogs.each do |blog| %>
-	<%= content_tag :table, :style => "background-color:grey" do%>
-		<%= content_tag :tr do%>
-			<%= content_tag :td, "Name"%>
-			<%= content_tag :td do%>
-				<%= text_field_tag "name", blog.name%>
+<%=content_tag :div, :class => "container well well-large" do %>
+	<%= content_tag :div, :class => "container-fluid" do %>
+		<%=content_tag :div, :class => "row-fluid" do %>
+			<%= content_tag :div, :class => "span8", :style => " background-color: white;" do %>
+				<%= content_tag :h3, "BLOGS", :color=>"orange"%>
+				<% @blogs.each do |blog| %>
+					<%= content_tag :table, :style => "" do%>
+						<%= content_tag :tr do%>
+							<%= content_tag :td, "Name"%>
+							<%= content_tag :td do%>
+								<%= text_field_tag "name", blog.name%>
+							<% end %>
+						<% end %>
+						<%= content_tag :tr do%>
+							<%= content_tag :td, "Description"%>
+							<%= content_tag :td do%>
+								<%= text_area_tag "Description", blog.desc, :cols => 30, :rows => 10%>
+							<% end %>
+						<% end %>
+						<%= content_tag :tr do%>
+							<%= content_tag :td do%>
+								<%= link_to "view", blog, :class => "pull-right"%>
+							<% end %>
+						<% end %>
+					<% end %>
+				<% end %>
 			<% end %>
-		<% end %>
-		<%= content_tag :tr do%>
-			<%= content_tag :td, "Description"%>
-			<%= content_tag :td do%>
-				<%= text_area_tag "Description", blog.desc, :cols => 30, :rows => 10%>
-			<% end %>
-		<% end %>
-		<%= content_tag :tr do%>
-			<%= content_tag :td do%>
-				<%= link_to "view", blog%>
-			<% end %>
+			<%= render :partial => "right_div"%>
 		<% end %>
 	<% end %>
 <% end %>
-
-<%= link_to 'New Blog', new_blog_path %>
