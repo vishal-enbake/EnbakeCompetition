@@ -1,0 +1,74 @@
+<%= content_tag :div, :class => "ac-container" do %>
+<%= content_tag :h2, "Create Account"%>
+	<%= content_tag :div, :class => "quote-message" do%>
+		Already Have An Account ?<%= link_to "Sign In", "#"%>
+	<% end %>
+	<%= content_tag :div, :id => "cam-content" do%>
+		<%= form_for :account, :url => registration_path(:account), :html => {:class => "sign-up-form c2s-form"} do |f|%>
+			<%= content_tag :table, :class => "form-table" do%>
+				<%= content_tag :tr do%>
+					<%= content_tag :td, :style => "align:right" do%>
+						<%=f.label :email%>
+					<% end %>
+					<%= content_tag :td do%>
+						<%= f.email_field :email, :required => true%>
+					<% end %>
+				<% end %>
+				<%= content_tag :tr do%>
+					<%= content_tag :td, :style => "align:right" do%>
+						<%=f.label :first_name%>
+					<% end %>
+					<%= content_tag :td do%>
+						<%= f.text_field :first_name, :required => true %>
+					<% end %>
+				<% end %>
+				<%= content_tag :tr do%>
+					<%= content_tag :td, :style => "align:right" do%>
+						<%=f.label :last_name%>
+					<% end %>
+					<%= content_tag :td do%>
+						<%= f.text_field :last_name %>
+					<% end %>
+				<% end %>
+				<%= content_tag :tr do%>
+					<%= content_tag :td, :style => "align:right" do%>
+						<%=f.label :company%>
+					<% end %>
+					<%= content_tag :td do%>
+						<%= f.text_field :company, :required => true%>
+					<% end %>
+				<% end %>
+				<%= content_tag :tr do%>
+					<%= content_tag :td, :style => "align:right" do%>
+						<%=f.label :password%>
+					<% end %>
+					<%= content_tag :td do%>
+						<%= f.password_field :password, :required => true%>
+					<% end %>
+				<% end %>
+				<%= content_tag :tr do%>
+					<%= content_tag :td, :style => "align:right" do%>
+						<%= f.label :password_confirmation%>
+					<% end %>
+					<%= content_tag :td do%>
+						<%= f.password_field :password_confirmation, :required => true%>
+					<% end %>
+				<% end %>
+				<%= content_tag :tr do%>
+					<%= content_tag :td %>
+					<%= content_tag :td do%>
+						<%= f.submit "Next", :class => "submit-button"%>
+					<% end %>
+				<% end %>
+			<% end %>
+			<%= content_tag :div, :class => "form-ins" do%>
+				<%= content_tag :div, :class => "form-ins-top" do%>
+					By clicking &quot;NEXT&quot;, I agree to the <%=link_to "User Agreement", "#"%> and <%= link_to "Privacy Policy", "#"%>
+				<% end %>
+				<%= content_tag :div, :class => "form-ins-bottom" do%>
+					(I may receive communications from Click2Sell and can change my notification preferences in <%= link_to "My Account", "#"%>
+				<% end %>
+			<% end %>
+		<% end %>
+	<% end %>
+<% end %>

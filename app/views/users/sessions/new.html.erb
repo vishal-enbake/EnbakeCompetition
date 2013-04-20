@@ -1,0 +1,46 @@
+<%= content_tag :div, :class => "ac-container" do%>
+	<%= content_tag :h2, "Sign In"%>
+	<%= content_tag :div, :id => "cam-content" do%>
+	<% debugger %>
+		<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => "form-sign-in"}) do |f|%>
+			<%= content_tag :table, :class => "form-table" do%>
+				<%= content_tag :tr do%>
+					<%= content_tag :td do%>
+						<%= f.label :email%>
+					<% end %>
+					<%= content_tag :td do%>
+						<%= f.email_field :email%>
+					<% end %>
+				<% end %>
+				<%= content_tag :tr do%>
+					<%= content_tag :td do%>
+						<%= f.label :password%>
+					<% end %>
+					<%= content_tag :td do%>
+						<%= f.password_field :password%>
+					<% end %>
+				<% end %>
+				<% if devise_mapping.rememberable? %>
+					<%= content_tag :tr do%>
+						<%= content_tag :td%>
+						<%= content_tag :td do%>
+							<%= f.check_box :remember_me%><%= f.label :remember_me %>
+						<% end %>
+					<% end %>
+				<% end %>
+				<%= content_tag :tr do%>
+					<%= content_tag :td%>
+					<%= content_tag :td do%>
+						<%= f.submit "Sign in", :class => "sign-in-button"%>
+					<% end %>
+				<% end %>
+				<%= content_tag :tr do%>
+					<%= content_tag :td%>
+					<%= content_tag :td do%>
+						<%= render "devise/shared/links" %>
+					<% end %>
+				<% end %>
+			<% end %>
+		<% end %>
+	<% end %>
+<% end %>

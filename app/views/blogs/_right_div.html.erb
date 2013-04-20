@@ -1,0 +1,13 @@
+<%= content_tag :div, :class => "span4", :style => "text-align:center; background-color: white; min-height: 450px;" do %>
+	<%= content_tag :div do %>
+		<%= content_tag :h3, "Top Blogs" %>
+		<%= content_tag :table, :class => 'table table-condensed' do%>
+			<%# @conversations.each do |conversation|%>
+				<%#= content_tag :tr do%>
+					<%#= content_tag :td, conversation.sent_by %>
+					<%#= content_tag :td, conversation.content %>
+				<%# end %>
+			<%# end unless @conversations.nil? %>
+		<% end %>
+	<% end %>
+<% end %>
